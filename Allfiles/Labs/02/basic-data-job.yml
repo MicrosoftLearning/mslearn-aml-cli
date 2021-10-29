@@ -1,0 +1,15 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: 
+  local_path: script
+command: >-
+  python train.py 
+  --diabetes-csv {inputs.diabetes}
+inputs:
+  diabetes:
+    data: azureml:diabetes-data:1
+    mode: mount
+environment: azureml:basic-env-scikit:1
+compute:
+  target: azureml:testdev-vm
+experiment_name: diabetes-example
+description: Train a Logistic Regression classification model on the diabetes dataset.

@@ -2,4 +2,4 @@ $schema: https://azuremlschemas.azureedge.net/latest/asset.schema.json
 name: diabetes-data
 version: 1
 local_path: data/diabetes.csv
-description: Dataset pointing to customer churn CSV on local computer. Data will be uploaded to default datastore.
+description: Dataset pointing to customer churn CSV on local computer. Data is uploaded to default datastore.

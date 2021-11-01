@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import os
+import argparse
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
@@ -14,7 +15,7 @@ run = Run.get_context()
 
 # Load the diabetes dataset
 print("Loading Data...")
-diabetes = pd.read_csv('diabetes.csv')
+diabetes = pd.read_csv(args.diabetes-csv)
 
 # Separate features and labels
 X, y = diabetes[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure','TricepsThickness','SerumInsulin','BMI','DiabetesPedigree','Age']].values, diabetes['Diabetic'].values

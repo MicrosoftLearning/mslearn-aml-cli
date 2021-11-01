@@ -22,9 +22,9 @@ az extension add -n ml -y
 ```azurecli
 az login
 ```
-1. Set the default subscription. Replace **<YOUR_SUBSCRIPTION_NAME_OR_ID>** with your **subscription name or ID**.
+1. Set the default subscription. Replace **<YOUR_SUBSCRIPTION_ID>** with your **subscription ID**.
 ```azurecli
-az account set -s "<YOUR_SUBSCRIPTION_NAME_OR_ID>"
+az account set -s "<YOUR_SUBSCRIPTION_ID>"
 ```
 
 ## Create an Azure resource group and set as default
@@ -86,9 +86,9 @@ To create an environment with the CLI (v2) you need two files:
 1. The specification YAML file, including the environment name, version and base Docker image. Navigate to  **Allfiles/Labs/01/basic-env.yml** to explore the contents of this file.
 1. The Conda environment file, including the libraries and packages you want installed. Navigate to **Allfiles/Labs/01/conda-envs/basic-env-cpu.yml** to explore the contents of this file.
 
-Before you can run the command to create the environment, you need the two files stored on the computer you're running the CLI from. 
+Before you can run the command to create the environment, you need the two files stored on the computer you're running the CLI from.
 
-1. Clone this repo or download and extract the ZIP to store the files locally. 
+1. Clone the repo `https://github.com/MicrosoftLearning/mslearn-aml-cli` or download and extract the ZIP to store the files locally.
 1. From your shell prompt, navigate to the **Allfiles/Labs/01** folder.
 1. Run the command:
 
@@ -117,3 +117,7 @@ az ml data create --file data-local-path.yml
 
 When you create a dataset from a local path, the workspace will automatically upload the dataset to the default datastore. In this case, it will be uploaded to the storage account which was created when you created the workspace. 
 Once the dataset is created, a summary is shown in the prompt. You can also view the environment in the [Azure ML Studio](https://ml.azure.com) in the Environments tab.
+
+## Upload a notebook and train a model
+
+## Clean up resources

@@ -4,10 +4,8 @@ channels:
 dependencies:
   - python=3.6.2
   - scikit-learn
-  - ipykernel
-  - matplotlib
   - pandas
   - pip
   - pip:
     - azureml-defaults
-    - pyarrow
+    - azureml-mlflow

@@ -32,7 +32,7 @@ In this exercise, you'll train a Logistic Regression model. Explore the training
     code .
     ```
 1. Navigate to **mslearn-aml-cli/Allfiles/Labs/02/basic-job** and open **basic-job.yml** by selecting the file.
-1. Change the **compute.target** value: replace <your-compute-instance-name> with the name of your compute instance.
+1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
 1. Run the job by using the following command:
     ```azurecli
     az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/basic-job/basic-job.yml --web

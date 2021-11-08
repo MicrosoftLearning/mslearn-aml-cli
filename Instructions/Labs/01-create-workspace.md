@@ -90,8 +90,8 @@ To execute a Python script, you'll need to install any necessary libraries and p
 
 To create an environment from a Docker image plus a Conda environment with the CLI (v2) you need two files:
 
-1. The specification YAML file, including the environment name, version and base Docker image.
-1. The Conda environment file, including the libraries and packages you want installed.
+- The specification YAML file, including the environment name, version and base Docker image.
+- The Conda environment file, including the libraries and packages you want installed.
 
 The necessary YAML files have already been created for you and are part of the **mslearn-aml-cli** repo you cloned in the Azure Cloud Shell.
 
@@ -113,8 +113,8 @@ Once the environment is created, a summary is shown in the prompt. You can also 
 
 To create a dataset in the workspace from a local CSV, you need two files:
 
-1. The specification YAML file, including the dataset name, version and local path of the CSV file. Navigate to  **Allfiles/Labs/01/data-local-path.yml** to explore the contents of this file.
-1. The CSV file containing data. In this exercise, you'll work with diabetes data. Navigate to **Allfiles/Labs/01/data/diabetes.csv** to explore the contents of this file.
+- The specification YAML file, including the dataset name, version and local path of the CSV file. Navigate to  **Allfiles/Labs/01/data-local-path.yml** to explore the contents of this file.
+- The CSV file containing data. In this exercise, you'll work with diabetes data. Navigate to **Allfiles/Labs/01/data/diabetes.csv** to explore the contents of this file.
 
 Before you create a dataset, you can explore the files by using the `code .` command in the Cloud Shell.
 1. Run the following command to create a dataset from the configuration described in `data-local-path.yml`:

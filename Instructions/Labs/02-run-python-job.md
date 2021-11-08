@@ -12,13 +12,13 @@ In this exercise, you will train a model with a Python script. The model trainin
 
 Before you continue, complete the [*Create an Azure Machine Learning Workspace and assets with the CLI (v2)*](Instructions/Labs/01-create-workspace.md) lab to set up your Azure Machine Learning environment.
 
-You'll run all commands in this lab from the Azure Cloud Shell. If this is your first time using the cloud shell, complete the [*Create an Azure Machine Learning Workspace and assets with the CLI (v2)*](Instructions/Labs/01-create-workspace.md) lab to set up the cloud shell environment.
+You'll run all commands in this lab from the Azure Cloud Shell. If this is your first time using the cloud shell, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](Instructions/Labs/01-create-workspace.md) lab to set up the cloud shell environment.
 
 1. Open the Cloud Shell by navigating to [http://shell.azure.com](https://shell.azure.com/?azure-portal=true) and signing in with your Microsoft account.
-1. The repo `https://github.com/MicrosoftLearning/mslearn-aml-cli` should be cloned. You can explore the repo and its contents by using the `code .` command in the Cloud Shell.
-1. If your compute instance is stopped. Start the instance again by using the following command. Change <your-compute-instance-name> to your compute instance name before running the code: 
+1. The repo [https://github.com/MicrosoftLearning/mslearn-aml-cli](https://github.com/MicrosoftLearning/mslearn-aml-cli) should be cloned. You can explore the repo and its contents by using the `code .` command in the Cloud Shell.
+1. If your compute instance is stopped. Start the instance again by using the following command. Change <your-compute-instance-name> to your compute instance name before running the code:
     ```azurecli
-    az ml compute stop --name "<your-compute-instance-name>" --no-wait
+    az ml compute start --name "<your-compute-instance-name>"
     ```
 
 ## Train a model
@@ -43,7 +43,7 @@ In this exercise, you'll train a Logistic Regression model. Explore the training
 
 Instead of storing a CSV file in the same folder as the training script, you can also train a model using a registered dataset as input.
 
-In the [*Create an Azure Machine Learning Workspace and assets with the CLI (v2)*](Instructions/Labs/01-create-workspace.md) lab, you created a dataset named **diabetes-data**. To check that the dataset exists within your workspace, you can navigate to the Azure Machine Learning Studio and select the **Datasets** tab from the left menu.
+In the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](Instructions/Labs/01-create-workspace.md) lab, you created a dataset named **diabetes-data**. To check that the dataset exists within your workspace, you can navigate to the Azure Machine Learning Studio and select the **Datasets** tab from the left menu.
 
 1. Navigate to **mslearn-aml-cli/Allfiles/Labs/02/input-data-job** and open **data-job.yml** by selecting the file.
 1. Change the **compute.target** value: replace <your-compute-instance-name> with the name of your compute instance.

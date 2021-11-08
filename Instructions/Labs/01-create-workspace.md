@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Lab: Create an Azure Machine Learning Workspace and assets with the CLI (v2)'
+    title: 'Lab: Create an Azure Machine Learning workspace and assets with the CLI (v2)'
     module: 'Module 1: Create Azure Machine Learning resources with the CLI (v2)'
 ---
 

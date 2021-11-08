@@ -34,34 +34,27 @@ To start, open the Azure Cloud Shell, install the Azure Machine Learning extensi
 To create a workspace with the CLI (v2), you need a resource group. You can create a new one with the CLI or use an existing resource group. Either way, make sure to set a resource group as the default to complete this exercise.
 
 1. Create a resource group. Choose a location close to you.
-
-> **Tip:** You can get a list of available locations with the `az account list-locations` command.
-
-```azurecli
-az group create --name "diabetes-dev-rg" --location "eastus"
-```
-
-2. Set the resource group as the default.
-
-```azurecli
-az configure --defaults group="diabetes-dev-rg"
-```
+    > **Tip:** You can get a list of available locations with the `az account list-locations` command.
+    ```azurecli
+    az group create --name "diabetes-dev-rg" --location "eastus"
+    ```
+1. Set the resource group as the default.
+    ```azurecli
+    az configure --defaults group="diabetes-dev-rg"
+    ```
 
 ## Create an Azure Machine Learning workspace and set as default
 
 As its name suggests, a workspace is a centralized place to manage all of the Azure ML assets you need to work on a machine learning project.
 
 1. Create a workspace:
-
-```azurecli
-az ml workspace create --name "aml-diabetes-dev"
-```
-
-2. Set the workspace as the default:
-
-```azurecli
-az configure --defaults workspace="aml-diabetes-dev"
-```
+    ```azurecli
+    az ml workspace create --name "aml-diabetes-dev"
+    ```
+1. Set the workspace as the default:
+    ```azurecli
+    az configure --defaults workspace="aml-diabetes-dev"
+    ```
 
 You can check your work by signing in to the [Azure Machine Learning Studio](https://ml.azure.com). After you sign in, choose the *aml-diabetes-dev* workspace to open it.
 
@@ -70,17 +63,16 @@ You can check your work by signing in to the [Azure Machine Learning Studio](htt
 To run a notebook, you'll need a compute instance.
 
 In this exercise, you'll create a compute instance with the following settings:
-    - `--name`: *Name of compute instance. Has to be unique and fewer than 24 characters.*
-    - `--size`: STANDARD_DS11_V2
-    - `--type`: ComputeInstance
-    - `--workspace-name`: *Will use the default workspace you've configured so you don't need to specify.*
-    - `--resource-group`: *Will use the default resource group you've configured so you don't need to specify.*
+- `--name`: *Name of compute instance. Has to be unique and fewer than 24 characters.*
+- `--size`: STANDARD_DS11_V2
+- `--type`: ComputeInstance
+- `--workspace-name`: *Will use the default workspace you've configured so you don't need to specify.*
+- `--resource-group`: *Will use the default resource group you've configured so you don't need to specify.*
 
 1. Run the `az ml compute create` with the settings listed above. Change the name to make it unique in your region. It should look something like this:
-
-```azurecli
-az ml compute create --name "testdev-vm" --size STANDARD_DS11_V2 --type ComputeInstance
-```
+    ```azurecli
+    az ml compute create --name "testdev-vm" --size STANDARD_DS11_V2 --type ComputeInstance
+    ```
 
 > Note: If a compute instance with the name "testdev-vm" already exists, change the name to make it unique within your Azure region, with a maximum of 24 characters.
 

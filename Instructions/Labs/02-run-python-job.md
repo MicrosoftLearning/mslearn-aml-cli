@@ -46,8 +46,7 @@ Instead of storing a CSV file in the same folder as the training script, you can
 In the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](Instructions/Labs/01-create-workspace.md) lab, you created a dataset named **diabetes-data**. To check that the dataset exists within your workspace, you can navigate to the Azure Machine Learning Studio and select the **Datasets** tab from the left menu.
 
 1. Navigate to **mslearn-aml-cli/Allfiles/Labs/02/input-data-job** and open **data-job.yml** by selecting the file.
-1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
-    Note that the command now runs the **main.py** script with the parameter **--diabetes-csv**. The input of that parameter is defined in the **inputs.diabetes** value. It takes version 1 of the **diabetes-data** dataset from the Azure ML workspace.
+1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance. Note that the command now runs the **main.py** script with the parameter **--diabetes-csv**. The input of that parameter is defined in the **inputs.diabetes** value. It takes version 1 of the **diabetes-data** dataset from the Azure ML workspace.
 1. Use the following command to run the job:
     ```azurecli
     az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/input-data-job/data-job.yml --web

@@ -6,31 +6,28 @@ lab:
 
 # Create an Azure Machine Learning Workspace and assets with the CLI (v2)
 
-In this exercise, you will create and explore an Azure Machine Learning workspace.
+In this exercise, you will create and explore an Azure Machine Learning workspace using the Azure Cloud Shell.
 
-## Install the Azure CLI and Azure Machine Learning extension
+## Set up the Azure Cloud Shell and install the Azure Machine Learning extension
 
-Before you continue, make sure you have the Azure CLI and the Azure Machine Learning extension installed on your computer.
+To start, open the Azure Cloud Shell, install the Azure Machine Learning extension and clone the Git repo.
 
-1. Use the instructions to [install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) based on the platform you choose.
-2. Open a shell prompt such as cmd.exe on Windows, or Bash on Linux or macOS. To run a command, copy and paste it in the shell prompt and hit **Enter**.
-3. Install the Azure Machine Learning extension `ml`:
-
-```azurecli
-az extension add -n ml -y
-```
-
-4. Sign in to Azure:
-
-```azurecli
-az login
-```
-
-5. Set the default subscription. Replace **<YOUR_SUBSCRIPTION_ID>** with your **subscription ID**.
-
-```azurecli
-az account set -s "<YOUR_SUBSCRIPTION_ID>"
-```
+1. In a browser, open the Azure portal at [http://portal.azure.com](https://portal.azure.com/?azure-portal=true), signing in with your Microsoft account.
+1. Select the [>_] (*Cloud Shell*) button at the top of the page to the right of the search box. This opens a Cloud Shell pane at the bottom of the portal.
+1. The first time you open the cloud shell, you will be asked to choose the type of shell you want to use (*Bash* or *PowerShell*). Select **Bash**.
+1. If you are asked to create storage for your cloud shell, check that the correct subscription is specified and select **Create storage**. Wait for the storage to be created.
+1. Install the Azure Machine Learning extension with the following command:
+    ```
+    az extension add -n ml -y
+    ```
+1. In the command shell, clone this Github repository to download all necessary files which are stored in the *Allfiles* folder.
+    ```
+    git clone https://github.com/MicrosoftLearning/mslearn-aml-cli.git mslearn-aml-cli
+    ```
+1. The files are downloaded to a folder named **mslearn-aml-cli**. To see the files in your Cloud Shell storage and work with them, type the following command in the shell:
+    ```
+    code .
+    ```
 
 ## Create an Azure resource group and set as default
 
@@ -57,7 +54,7 @@ As its name suggests, a workspace is a centralized place to manage all of the Az
 1. Create a workspace:
 
 ```azurecli
-az ml workspace create --workspace-name "aml-diabetes-dev"
+az ml workspace create --name "aml-diabetes-dev"
 ```
 
 2. Set the workspace as the default:
@@ -79,30 +76,36 @@ In this exercise, you'll create a compute instance with the following settings:
     - `--workspace-name`: *Will use the default workspace you've configured so you don't need to specify.*
     - `--resource-group`: *Will use the default resource group you've configured so you don't need to specify.*
 
-1. Run the `az ml compute create` with the settings listed above. It should look something like this:
+1. Run the `az ml compute create` with the settings listed above. Change the name to make it unique in your region. It should look something like this:
 
 ```azurecli
 az ml compute create --name "testdev-vm" --size STANDARD_DS11_V2 --type ComputeInstance
 ```
 
+> Note: If a compute instance with the name "testdev-vm" already exists, change the name to make it unique within your Azure region, with a maximum of 24 characters.
+
 ## Create an environment
 
-To execute a Python script, you'll need to install any necessary libaries and packages. To automate the installation of packages, you can use an environment.
+To execute a Python script, you'll need to install any necessary libraries and packages. To automate the installation of packages, you can use an environment.
 
-To create an environment with the CLI (v2) you need two files:
+To create an environment from a Docker image plus a Conda environment with the CLI (v2) you need two files:
 
-1. The specification YAML file, including the environment name, version and base Docker image. Navigate to  **Allfiles/Labs/01/basic-env.yml** to explore the contents of this file.
-2. The Conda environment file, including the libraries and packages you want installed. Navigate to **Allfiles/Labs/01/conda-envs/basic-env-cpu.yml** to explore the contents of this file.
+1. The specification YAML file, including the environment name, version and base Docker image.
+1. The Conda environment file, including the libraries and packages you want installed.
 
-Before you can run the command to create the environment, you need the two files stored on the computer you're running the CLI from.
+The necessary YAML files have already been created for you and are part of the **mslearn-aml-cli** repo you cloned in the Azure Cloud Shell.
 
-3. Clone the repo `https://github.com/MicrosoftLearning/mslearn-aml-cli` or download and extract the ZIP to store the files locally.
-4. From your shell prompt, navigate to the **Allfiles/Labs/01** folder.
-5. Run the command:
-
-```azurecli
-az ml environment create --file basic-env.yml
-```
+1. To navigate to the YAML files, run the following command in the Cloud Shell:
+    ```
+    code .
+    ```
+1. Navigate to the **mslearn-aml-cli/Allfiles/Labs/01** folder.
+1. Select the **basic-env.yml** file to open it. Explore its contents which describes how the environment should be created within the Azure ML workspace.
+1. Select the **conda-envs/basic-env-cpu.yml** file to open it. Explore its contents which list the libraries that need to be installed on the compute.
+1. Run the command:
+    ```azurecli
+    az ml environment create --file ./mslearn-aml-cli/Allfiles/Labs/01/basic-env.yml
+    ```
 
 Once the environment is created, a summary is shown in the prompt. You can also view the environment in the [Azure ML Studio](https://ml.azure.com) in the Environments tab.
 
@@ -111,24 +114,17 @@ Once the environment is created, a summary is shown in the prompt. You can also 
 To create a dataset in the workspace from a local CSV, you need two files:
 
 1. The specification YAML file, including the dataset name, version and local path of the CSV file. Navigate to  **Allfiles/Labs/01/data-local-path.yml** to explore the contents of this file.
-2. The CSV file containing data. In this exercise, you'll work with diabetes data. Navigate to **Allfiles/Labs/01/data/diabetes.csv** to explore the contents of this file.
+1. The CSV file containing data. In this exercise, you'll work with diabetes data. Navigate to **Allfiles/Labs/01/data/diabetes.csv** to explore the contents of this file.
 
-Before you can run the command to create the dataset, you need the two files stored on the computer.
+Before you create a dataset, you can explore the files by using the `code .` command in the Cloud Shell.
+1. Run the following command to create a dataset from the configuration described in `data-local-path.yml`:
+    ```azurecli
+    az ml data create --file ./mslearn-aml-cli/Allfiles/Labs/01/data-local-path.yml
+    ```
 
-3. Clone this repo or download and extract the ZIP to store the files locally. 
-4. From your shell prompt, navigate to the **Allfiles/Labs/01** folder.
-5. Run the command:
+When you create a dataset from a local path, the workspace will automatically upload the dataset to the default datastore. In this case, it will be uploaded to the storage account which was created when you created the workspace.
 
-```azurecli
-az ml data create --file data-local-path.yml
-```
-
-When you create a dataset from a local path, the workspace will automatically upload the dataset to the default datastore. In this case, it will be uploaded to the storage account which was created when you created the workspace. 
 Once the dataset is created, a summary is shown in the prompt. You can also view the environment in the [Azure ML Studio](https://ml.azure.com) in the Environments tab.
-
-## Upload a notebook and train a model
-
-
 
 ## Clean up resources
 
@@ -142,7 +138,7 @@ az ml compute stop --name "testdev-vm" --no-wait
 
 > **Note:** Stopping your compute ensures your subscription won't be charged for compute resources. You will however be charged a small amount for data storage as long as the Azure Machine Learning workspace exists in your subscription. If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat this lab to create the workspace and prepare the environment first.
 
-To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
+To delete the complete Azure Machine Learning workspace and all assets you created, you can use the following command in the CLI:
 
 ```azurecli
 az ml workspace delete

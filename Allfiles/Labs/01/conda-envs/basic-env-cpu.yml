@@ -2,10 +2,12 @@ name: basic-env-cpu
 channels:
   - conda-forge
 dependencies:
-  - python=3.6.2
+  - python=3.7
   - scikit-learn
   - pandas
+  - numpy
   - pip
   - pip:
     - azureml-defaults
+    - azureml-core
     - azureml-mlflow

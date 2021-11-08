@@ -3,8 +3,7 @@ code:
   local_path: src
 command: >-
   python main.py 
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu:10
-compute:
-  target: azureml:testdev-vm
+environment: azureml:basic-env-scikit:1
+compute: azureml:<your-compute-instance-name>
 experiment_name: diabetes-example
 description: Train a Logistic Regression classification model on the diabetes dataset that is stored locally.

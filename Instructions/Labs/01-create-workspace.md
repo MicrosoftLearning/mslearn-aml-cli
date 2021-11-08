@@ -34,7 +34,6 @@ To start, open the Azure Cloud Shell, install the Azure Machine Learning extensi
 To create a workspace with the CLI (v2), you need a resource group. You can create a new one with the CLI or use an existing resource group. Either way, make sure to set a resource group as the default to complete this exercise.
 
 1. Create a resource group. Choose a location close to you.
-> **Tip:** You can get a list of available locations with the `az account list-locations` command.
     ```azurecli
     az group create --name "diabetes-dev-rg" --location "eastus"
     ```
@@ -42,6 +41,8 @@ To create a workspace with the CLI (v2), you need a resource group. You can crea
     ```azurecli
     az configure --defaults group="diabetes-dev-rg"
     ```
+
+> **Tip:** You can get a list of available locations with the `az account list-locations` command.
 
 ## Create an Azure Machine Learning workspace and set as default
 

@@ -75,7 +75,7 @@ In this exercise, you'll create a compute instance with the following settings:
     az ml compute create --name "testdev-vm" --size STANDARD_DS11_V2 --type ComputeInstance
     ```
 
-> Note: If a compute instance with the name "testdev-vm" already exists, change the name to make it unique within your Azure region, with a maximum of 24 characters.
+> **Note**: If a compute instance with the name "testdev-vm" already exists, change the name to make it unique within your Azure region, with a maximum of 24 characters.
 
 ## Create an environment
 

@@ -35,6 +35,7 @@ To create a workspace with the CLI (v2), you need a resource group. You can crea
 
 1. Create a resource group. Choose a location close to you.
 > **Tip:** You can get a list of available locations with the `az account list-locations` command.
+
     ```azurecli
     az group create --name "diabetes-dev-rg" --location "eastus"
     ```

@@ -1,20 +1,19 @@
 $schema: https://azuremlschemas.azureedge.net/latest/sweepJob.schema.json
-type: sweep_job
-algorithm: grid
+type: sweep
+sampling_algorithm: grid
 trial:
   code: 
     local_path: src
   command: >-
     python main.py
-    --diabetes-csv {inputs.diabetes} 
-    --learning-rate {search_space.learning_rate}
-    --n-estimators {search_space.n_estimators}
-  inputs:
+    --diabetes-csv ${{inputs.diabetes}} 
+    --learning-rate ${{search_space.learning_rate}}
+    --n-estimators ${{search_space.n_estimators}}
+  environment: azureml:basic-env-scikit:1
+inputs:
     diabetes:
       data: azureml:diabetes-data:1
-  environment: azureml:basic-env-scikit:1
-  compute:
-    target: azureml:<your-compute-cluster-name>
+compute: azureml:aml-cluster
 search_space:
   learning_rate:
     type: choice
@@ -25,8 +24,9 @@ search_space:
 objective:
   primary_metric: training_roc_auc_score
   goal: maximize
-max_total_trials: 6
-max_concurrent_trials: 3
-timeout_minutes: 120
+limits:
+  max_total_trials: 6
+  max_concurrent_trials: 3
+  timeout: 3600
 experiment_name: diabetes-sweep-example
 description: Run a hyperparameter sweep job for classification on diabetes dataset.

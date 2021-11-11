@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Run a basic Python training job'
-    module: 'Module 2: Run jobs in Azure Machine Learning with CLI (v2)'
+    module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
 ---
 
 # Run a basic Python training job

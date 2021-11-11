@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Create an Azure Machine Learning workspace and assets with the CLI (v2)'
-    module: 'Module 1: Create Azure Machine Learning resources with the CLI (v2)'
+    module: 'Module: Create Azure Machine Learning resources with the CLI (v2)'
 ---
 
 # Create an Azure Machine Learning workspace and assets with the CLI (v2)
@@ -16,6 +16,11 @@ To start, open the Azure Cloud Shell, install the Azure Machine Learning extensi
 1. Select the [>_] (*Cloud Shell*) button at the top of the page to the right of the search box. This opens a Cloud Shell pane at the bottom of the portal.
 1. The first time you open the cloud shell, you will be asked to choose the type of shell you want to use (*Bash* or *PowerShell*). Select **Bash**.
 1. If you are asked to create storage for your cloud shell, check that the correct subscription is specified and select **Create storage**. Wait for the storage to be created.
+1. To avoid any conflicts with previous versions, remove any ML CLI extensions (both version 1 and 2) with this command:
+    ```
+    az extension remove -n azure-cli-ml
+    az extension remove -n ml
+    ```
 1. Install the Azure Machine Learning extension with the following command:
     ```
     az extension add -n ml -y
@@ -75,7 +80,7 @@ In this exercise, you'll create a compute instance with the following settings:
     az ml compute create --name "testdev-vm" --size STANDARD_DS11_V2 --type ComputeInstance
     ```
 
-> **Note:** If a compute instance with the name "testdev-vm" already exists, change the name to make it unique within your Azure region, with a maximum of 24 characters.
+> **Note:** If a compute instance with the name "testdev-vm" already exists, change the name to make it unique within your Azure region, with a maximum of 24 characters. If you get an error because the name is not unique, delete the partially created compute instance with `az ml compute delete "<compute-instance-name>"`.
 
 ## Create an environment
 
@@ -112,7 +117,7 @@ To create a dataset in the workspace from a local CSV, you need two files:
 Before you create a dataset, you can explore the files by using the `code .` command in the Cloud Shell.
 1. Run the following command to create a dataset from the configuration described in `data-local-path.yml`:
     ```azurecli
-    az ml data create --file ./mslearn-aml-cli/Allfiles/Labs/01/data-local-path.yml
+    az ml dataset create --file ./mslearn-aml-cli/Allfiles/Labs/01/data-local-path.yml
     ```
 
 When you create a dataset from a local path, the workspace will automatically upload the dataset to the default datastore. In this case, it will be uploaded to the storage account which was created when you created the workspace.

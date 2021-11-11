@@ -30,19 +30,40 @@ To train multiple models with varying hyperparameters, you can run the training 
 In this exercise, you'll train a Gradient Boosting Classifier model. Explore the training script **main.py** by navigating to **mslearn-aml-cli/Allfiles/Labs/03/src/main.py**. The dataset used is the registered dataset **diabetes-data**.
 
 There are two hyperparameter values:
-- Learning rate: [0.01, 0.1, 1.0]
-- N estimators: [10, 100]
 
-You'll use 
+- Learning rate: with search space [0.01, 0.1, 1.0]
+- N estimators: with search space [10, 100]
 
-1. Run the following command in the Cloud Shell to open the files of the cloned repo:
+You'll use the grid sampling method on these hyperparameters, which means you'll try out all possible combinations of values. As a result, you'll train six models as part of the sweep job. Recall that each individual model will be listed as a child run, and the details of the overview of the sweep job will be stored with the main experiment run.
+
+To run the sweep job:
+
+1. Run the following command in the Cloud Shell to open the files of the cloned repo, if they are not opened yet:
     ```azurecli
     code .
     ```
-1. Navigate to **mslearn-aml-cli/Allfiles/Labs/02/basic-job** and open **basic-job.yml** by selecting the file.
-1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
+1. Navigate to **mslearn-aml-cli/Allfiles/Labs/02/sweep-job** and open **sweep-job.yml** by selecting the file.
+1. Change the **compute** value: replace **aml-cluster** with the name of your compute cluster (if you changed it).
 1. Run the job by using the following command:
     ```azurecli
-    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/basic-job/basic-job.yml --web
+    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/sweep-job/sweep-job.yml --web
     ```
-1. When using the `--web` parameter, the experiment run will automatically open in the Azure Machine Learning Studio. You can monitor the job there. Refresh the view if necessary. Once completed, you can explore the details of the job which are stored in the experiment run.
+1. When using the `--web` parameter, the experiment run will automatically open in the Azure Machine Learning Studio. You can monitor the job there. Refresh the view if necessary. Once completed, you can explore the details of the job and its child runs which are stored in the experiment run.
+
+## Clean up resources
+
+When you're finished exploring Azure Machine Learning, shut down the compute instance to avoid unnecessary charges in your Azure subscription. The compute cluster will automatically scale down to 0 nodes, so there is no need to stop the cluster.
+
+You can stop a compute instance with the following command. Change `"testdev-vm"` to the name of your compute instance if necessary.
+
+```azurecli
+az ml compute stop --name "testdev-vm" --no-wait
+```
+
+> **Note:** Stopping your compute ensures your subscription won't be charged for compute resources. You will however be charged a small amount for data storage as long as the Azure Machine Learning workspace exists in your subscription. If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat this lab to create the workspace and prepare the environment first.
+
+To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
+
+```azurecli
+az ml workspace delete
+```

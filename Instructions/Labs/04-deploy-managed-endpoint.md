@@ -1,9 +1,3 @@
-# ---
-# lab:
-#    title: 'Lab: Deploy a model to a managed online endpoint'
-#    module: 'Module 4: Deploy an Azure Machine Learning model to a managed endpoint with CLI (v2)'
-# ---
-
 # Deploy a model to a managed online endpoint
 
 In this exercise, you will deploy a model to a managed online endpoint.

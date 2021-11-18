@@ -2,13 +2,13 @@ $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: 
   local_path: src
 command: >-
-  python main.py 
+  python mlflow-autolog.py 
   --diabetes-csv ${{inputs.diabetes}}
 inputs:
   diabetes:
-    data: azureml:diabetes-data:1
-    mode: mount
+    dataset: azureml:diabetes-data:1
+    mode: ro_mount
 environment: azureml:basic-env-scikit:1
 compute: azureml:<your-compute-instance-name>
-experiment_name: diabetes-data-example
-description: Train a classification model on diabetes data using a registered dataset as input.
+experiment_name: diabetes-mlflow-example
+description: Train a classification model on diabetes data using a registered dataset as input. Use MLflow to track parameter, metric, and artifact.

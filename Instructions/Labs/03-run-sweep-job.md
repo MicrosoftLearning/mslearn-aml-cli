@@ -10,7 +10,7 @@ In this exercise, you will perform hyperparameter tuning when training a model w
 
 ## Prerequisites
 
-Before you continue, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](Instructions/Labs/01-create-workspace.md) lab to set up your Azure Machine Learning environment.
+Before you continue, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](01-create-workspace.md) lab to set up your Azure Machine Learning environment.
 
 You'll run all commands in this lab from the Azure Cloud Shell. If this is your first time using the cloud shell, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](Instructions/Labs/01-create-workspace.md) lab to set up the cloud shell environment.
 
@@ -46,9 +46,9 @@ To run the sweep job:
 1. Change the **compute** value: replace **aml-cluster** with the name of your compute cluster (if you changed it).
 1. Run the job by using the following command:
     ```azurecli
-    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/sweep-job/sweep-job.yml --web
+    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/sweep-job/sweep-job.yml
     ```
-1. When using the `--web` parameter, the experiment run will automatically open in the Azure Machine Learning Studio. You can monitor the job there. Refresh the view if necessary. Once completed, you can explore the details of the job and its child runs which are stored in the experiment run.
+1. Open another tab in your browser and open the Azure Machine Learning Studio. Go to the **Experiments** page and locate the **diabetes-sweep-example** experiment. Open the run to monitor the job. Refresh the view if necessary. Once completed, you can explore the details of the job which are stored in the experiment run.
 
 ## Clean up resources
 

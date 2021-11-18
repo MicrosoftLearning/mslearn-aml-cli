@@ -11,3 +11,4 @@ dependencies:
     - azureml-defaults
     - azureml-core
     - azureml-mlflow
+    - mlflow

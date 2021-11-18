@@ -35,9 +35,9 @@ In this exercise, you'll train a Logistic Regression model. Explore the training
 1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
 1. Run the job by using the following command:
     ```azurecli
-    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/basic-job/basic-job.yml --web
+    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/basic-job/basic-job.yml
     ```
-1. When using the `--web` parameter, the experiment run will automatically open in the Azure Machine Learning Studio. You can monitor the job there. Refresh the view if necessary. Once completed, you can explore the details of the job which are stored in the experiment run.
+1. Open another tab in your browser and open the Azure Machine Learning Studio. Go to the **Experiments** page and locate the **diabetes-example** experiment. Open the run to monitor the job. Refresh the view if necessary. Once completed, you can explore the details of the job which are stored in the experiment run.
 
 ## Train a model with dataset from datastore
 
@@ -49,9 +49,9 @@ In the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)]
 1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance. Note that the command now runs the **main.py** script with the parameter **--diabetes-csv**. The input of that parameter is defined in the **inputs.diabetes** value. It takes version 1 of the **diabetes-data** dataset from the Azure ML workspace.
 1. Use the following command to run the job:
     ```azurecli
-    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/input-data-job/data-job.yml --web
+    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/02/input-data-job/data-job.yml
     ```
-1. A new tab will open in your browser to show the experiment run associated with this job. You can view the details during and after the run has completed. Note that now, it lists the input dataset **diabetes-data**.
+1. Go to the Azure Machine Learning Studio and locate the **diabetes-data-example** experiment. Open the run to monitor the job. Refresh the view if necessary. Once completed, you can explore the details of the job which are stored in the experiment run. Note that now, it lists the input dataset **diabetes-data**.
 
 ## Clean up resources
 

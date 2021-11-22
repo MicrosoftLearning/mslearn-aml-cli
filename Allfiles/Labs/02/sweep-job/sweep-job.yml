@@ -11,8 +11,9 @@ trial:
     --n-estimators ${{search_space.n_estimators}}
   environment: azureml:basic-env-scikit:1
 inputs:
-    diabetes:
-      data: azureml:diabetes-data:1
+  diabetes:
+    dataset: azureml:diabetes-data:1
+    mode: ro_mount
 compute: azureml:aml-cluster
 search_space:
   learning_rate:

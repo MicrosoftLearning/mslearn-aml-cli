@@ -23,7 +23,7 @@ You'll run all commands in this lab from the Azure Cloud Shell. If this is your 
 
 ## Track a model
 
-In this exercise, you'll train a Logistic Regression model to classify whether someone has diabetes. You can track things like input parameter such as the value of the regularization rate used to train the model. As a result, you want to know the accuracy of the model and store a confusion matrix to explain the accuracy.
+You'll train a Logistic Regression model to classify whether someone has diabetes. You can track things like input parameter such as the value of the regularization rate used to train the model. As a result, you want to know the accuracy of the model and store a confusion matrix to explain the accuracy.
 
 To track the input and output of a model, we can:
 

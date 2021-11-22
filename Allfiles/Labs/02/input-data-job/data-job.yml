@@ -6,8 +6,8 @@ command: >-
   --diabetes-csv ${{inputs.diabetes}}
 inputs:
   diabetes:
-    data: azureml:diabetes-data:1
-    mode: mount
+    dataset: azureml:diabetes-data:1
+    mode: ro_mount
 environment: azureml:basic-env-scikit:1
 compute: azureml:<your-compute-instance-name>
 experiment_name: diabetes-data-example

@@ -1,19 +1,61 @@
 # Deploy a model to a managed online endpoint
 
-In this exercise, you will deploy a model to a managed online endpoint.
+In this exercise, you will deploy an MLflow model to a managed online endpoint.
 
 ## Prerequisites
 
-
+Before you continue, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](01-create-workspace.md) lab to set up your Azure Machine Learning environment.
 
 ## Deploy a model
 
-### MLflow endpoint
+A model has been trained to predict whether someone has diabetes. To consume the model, you want to deploy it to a managed online endpoint. The endpoint can be called from an application where a patient's information can be entered, after which the model can decide whether the patient is probable to have diabetes.
+
+To deploy the model using the CLI (v2), you first create an endpoint.
+
+1. Run the following command in the Cloud Shell to open the files of the cloned repo:
+    ```azurecli
+    code .
+    ```
+1. Navigate to **mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint** and open **create-endpoint.yml** by selecting the file.
+1. Explore the contents of the file. Note that your endpoint will use key-based authentication, and the name of the endpoint which must be unique in the Azure region.
+1. Use the following command to create the new endpoint:
+    ```azurecli
+    az ml online-endpoint create --name diabetes-mlflow -f ./mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint/create-endpoint.yml
+    ```
+1. Next, you'll create the deployment. In the same folder **mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint**, find and open the YAML configuration file **mlflow-deployment.yml** for the deployment.
+1. The deployment configuration refers to the endpoint configuration. In addition, it specifies how the model should be registered, what kind of compute should be used for the inference configuration, and where it can find the model assets. The MLflow model assets are stored in the **model** folder.
+1. To deploy the model, run the following command:
+    ```azurecli
+    az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow -f ./mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint/mlflow-deployment.yaml --all-traffic
+    ```
+1. Deployment may take some time, and progress will be visible in the Azure Cloud Shell. You can also view the endpoint in the Azure Machine Learning Studio, in the **Endpoints** tab, under **Real-time endpoints**.
+
+## Test the endpoint
+
+Once deployment is completed, you can test and consume the endpoint. Let's try testing it with two data points.
+
+1. In the **mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint** folder, you can find the **sample-data.json** that contains two data points.
+1. Run the following command to invoke the endpoint to predict for these two patients whether they have diabetes:
+    ```azurecli
+    az ml online-endpoint invoke --name diabetes-mlflow --request-file ./mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint/sample-data.json
+    ```
+1. As a result, you will see either a 1 or a 0 for each data point. A 1 means the patient is likely to have diabetes, a 0 means the patient is likely not to have diabetes.
+1. Feel free to play around with the sample data and run the command again to see different results!
+
+## Clean up resources
+
+When you're finished exploring Azure Machine Learning, delete your endpoint to avoid unnecessary charges in your Azure subscription.
+
+You can delete an endpoint by using the following command:
 
 ```azurecli
-az ml online-endpoint create --name diabetes-mlflow -f ./mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint/create-endpoint.yml
+az ml online-endpoint delete --name diabetes-mlflow
 ```
 
+You'll be asked if you are sure you want to delete the endpoint. Type `y` and press Enter to confirm.
+
+To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
+
 ```azurecli
-az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow -f ./mslearn-aml-cli/Allfiles/Labs/05/mlflow-endpoint/mlflow-deployment.yaml --all-traffic
+az ml workspace delete
 ```

@@ -41,7 +41,7 @@ You'll submit a job from the Azure Cloud Shell with the CLI (v2), using a Python
     code .
     ```
 1. Navigate to **mslearn-aml-cli/Allfiles/Labs/04/mlflow-job** and open **mlflow-job.yml** by selecting the file.
-1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
+1. Change the **compute** value. Replace <your-compute-instance-name> with the name of your compute instance.
 1. Note that you'll run the **mlflow-autolog.py** script that is located in the **src** folder. Navigate to that folder and open the file to explore it. Find the `mlflow.autolog()` method.
 1. Run the job by using the following command:
     ```azurecli

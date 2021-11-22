@@ -27,8 +27,8 @@ In this exercise, you'll train a Logistic Regression model to classify whether s
 
 To track the input and output of a model, we can:
 
-- Enable autologging using `mlflow.autolog()`.
-- Use logging functions to track custom metrics using `mlflow.log_*`.
+- Enable autologging using `mlflow.autolog()`
+- Use logging functions to track custom metrics using `mlflow.log_*`
 
 Note that to do either, we have to include the `mlflow` and `azureml-mlflow` packages in the environment used during training. The registered environment **basic-env-scikit** includes these two packages.
 

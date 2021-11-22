@@ -2,6 +2,7 @@
 import mlflow
 import argparse
 import glob
+import joblib
 
 import pandas as pd
 import numpy as np
@@ -25,8 +26,9 @@ def main(args):
     mlflow.log_param("Regularization rate", reg_rate)
     model = train_model(reg_rate, X_train, X_test, y_train, y_test)
 
+    # upload model to outputs
 
-    
+  
 def process_data(df):
     # split dataframe into X and y
     X, y = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure','TricepsThickness','SerumInsulin','BMI','DiabetesPedigree','Age']].values, df['Diabetic'].values

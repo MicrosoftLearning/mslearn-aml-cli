@@ -46,13 +46,11 @@ Once deployment is completed, you can test and consume the endpoint. Let's try t
 
 When you're finished exploring Azure Machine Learning, delete your endpoint to avoid unnecessary charges in your Azure subscription.
 
-You can delete an endpoint by using the following command:
+You can delete an endpoint and all underlying deployments by using the following command:
 
 ```azurecli
-az ml online-endpoint delete --name diabetes-mlflow
+az ml online-endpoint delete --name diabetes-mlflow --yes --no-wait
 ```
-
-You'll be asked if you are sure you want to delete the endpoint. Type `y` and press Enter to confirm.
 
 To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
 

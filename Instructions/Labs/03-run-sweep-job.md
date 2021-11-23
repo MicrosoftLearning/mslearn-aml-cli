@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Lab: Perform hyperparameter tuning with the CLI (v2)'
+    title: 'Lab: Perform hyperparameter tuning with a sweep job'
     module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
 ---
 

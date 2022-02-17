@@ -1,0 +1,40 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+experiment_name: diabetes-pipeline-example
+
+# <inputs_and_outputs>
+inputs:
+  pipeline_job_input: #using dataset, can use datastore + datapath also
+    dataset: azureml:diabetes-data:1
+    mode: download
+
+outputs: 
+  pipeline_job_prepped_data:
+    mode: upload
+  pipeline_job_trained_model:
+    mode: upload
+
+# </inputs_and_outputs>
+
+# <jobs>
+compute: azureml:aml-cluster
+settings:
+  datastore: azureml:workspaceblobstore
+
+jobs:
+  prep-job:
+    type: component
+    component: file:./prep.yml
+    inputs:
+      raw_data: ${{inputs.pipeline_job_input}}
+    outputs:
+      prep_data: ${{outputs.pipeline_job_prepped_data}}
+
+  train-job:
+    type: component
+    component: file:./train.yml
+    inputs:
+      training_data: ${{jobs.prep-job.outputs.prep_data}}
+    outputs:
+      model_output: ${{outputs.pipeline_job_trained_model}}
+# </jobs>

@@ -40,12 +40,12 @@ You'll submit a job from the Azure Cloud Shell with the CLI (v2), using a Python
     ```azurecli
     code .
     ```
-1. Navigate to **mslearn-aml-cli/Allfiles/Labs/04/mlflow-job** and open **mlflow-job.yml** by selecting the file.
+1. Navigate to **mslearn-aml-cli/Allfiles/Labs/03/mlflow-job** and open **mlflow-job.yml** by selecting the file.
 1. Change the **compute** value. Replace <your-compute-instance-name> with the name of your compute instance.
 1. Note that you'll run the **mlflow-autolog.py** script that is located in the **src** folder. Navigate to that folder and open the file to explore it. Find the `mlflow.autolog()` method.
 1. Run the job by using the following command:
     ```azurecli
-    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/04/mlflow-job/mlflow-job.yml
+    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/03/mlflow-job/mlflow-job.yml
     ```
 1. Open another tab in your browser and open the Azure Machine Learning Studio. Go to the **Experiments** page and locate the **diabetes-mlflow-example** experiment. Open the run to monitor the job. Refresh the view if necessary. Once completed, you can explore the details of the job which are stored in the experiment run.
 
@@ -53,12 +53,12 @@ You'll submit a job from the Azure Cloud Shell with the CLI (v2), using a Python
 
 Instead of using the autologging feature of Mlflow, you can also create and track your own parameters, metrics, and artifacts. For this, we'll use another training script.
 
-1. Navigate to **mslearn-aml-cli/Allfiles/Labs/04/mlflow-job** and open **mlflow-job.yml** by selecting the file.
+1. Navigate to **mslearn-aml-cli/Allfiles/Labs/03/mlflow-job** and open **mlflow-job.yml** by selecting the file.
 1. Now, you want to run the **custom-mlflow.py** script that is located in the **src** folder. In the **mlflow-job.yml** file, remove the **mlflow-autolog.py** file, and replace with **custom-mlflow.py**. Don't forget to save the YAML file!
 1. To explore the training script, navigate to the **src** folder and open the file to explore it. Find the `mlflow.log_param()`, `mlflow.metric()`, and `mlflow.artifact()` methods.
 1. Run the job by using the following command:
     ```azurecli
-    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/04/mlflow-job/mlflow-job.yml
+    az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/03/mlflow-job/mlflow-job.yml
     ```
 1. Go to the Azure Machine Learning Studio and again, locate the **diabetes-mlflow-example** experiment. Open the newest run to monitor the job. Once completed, you'll find the regularization rate in the **Details** tab under **Parameters**. The accuracy score is listed under **Metrics** and the confusion matrix can be found under **Images**.
 

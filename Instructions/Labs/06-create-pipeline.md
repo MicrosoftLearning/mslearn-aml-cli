@@ -65,8 +65,7 @@ You can reuse the components by creating a pipeline with the Designer. You can r
 1. In the left menu, expand the **Custom Components** section.
 1. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
 1. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
-1. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
-1. Your pipeline should look like this:
+1. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
 ![Decision Tree Pipeline in Designer](media/designer-pipeline-decision.png)
 1. Submit your pipeline and wait until all components have successfully completed.
 
@@ -77,7 +76,8 @@ You have now trained the model with a similar pipeline as before (only omitting 
 
 The new model training component expects a numeric input, namely the regularization rate. 
 
-1. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. 
+1. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. Your pipeline should look like this:
+![Logistic Regression Pipeline in Designer](media/designer-pipeline-regression.png)
 1. Submit the pipeline. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
 
 ## Clean up resources

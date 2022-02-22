@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Run a pipeline with components'
-    module: 'Module: Run pipelines in Azure Machine Learning with CLI (v2)'
+    module: 'Module: Run component-based pipelines in Azure Machine Learning with CLI (v2)'
 ---
 
 # Run a pipeline with components

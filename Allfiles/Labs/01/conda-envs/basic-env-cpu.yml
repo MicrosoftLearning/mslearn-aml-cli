@@ -6,6 +6,7 @@ dependencies:
   - scikit-learn
   - pandas
   - numpy
+  - matplotlib
   - pip
   - pip:
     - azureml-defaults

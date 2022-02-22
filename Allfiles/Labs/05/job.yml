@@ -9,11 +9,12 @@ inputs:
     mode: download
 
 outputs: 
-  pipeline_job_prepped_data:
+  pipeline_job_cleaned_data:
+    mode: upload
+  pipeline_job_normalized_data:
     mode: upload
   pipeline_job_trained_model:
     mode: upload
-
 # </inputs_and_outputs>
 
 # <jobs>
@@ -22,19 +23,33 @@ settings:
   datastore: azureml:workspaceblobstore
 
 jobs:
-  prep-job:
+  stats-job:
     type: component
-    component: file:./prep.yml
+    component: file:./stats.yml
     inputs:
-      raw_data: ${{inputs.pipeline_job_input}}
+      input_data: ${{inputs.pipeline_job_input}}
+
+  fix-missing-job:
+    type: component
+    component: file:./fix-missing-data.yml
+    inputs:
+      input_data: ${{inputs.pipeline_job_input}}
     outputs:
-      prep_data: ${{outputs.pipeline_job_prepped_data}}
+      output_data: ${{outputs.pipeline_job_cleaned_data}}
+
+  normalize-job:
+    type: component
+    component: file:./normalize.yml
+    inputs:
+      input_data: ${{jobs.fix-missing-job.outputs.output_data}}
+    outputs:
+      output_data: ${{outputs.pipeline_job_normalized_data}}
 
   train-job:
     type: component
     component: file:./train.yml
     inputs:
-      training_data: ${{jobs.prep-job.outputs.prep_data}}
+      training_data: ${{jobs.normalize-job.outputs.output_data}}
     outputs:
       model_output: ${{outputs.pipeline_job_trained_model}}
 # </jobs>

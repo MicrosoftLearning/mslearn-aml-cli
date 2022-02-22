@@ -1,0 +1,20 @@
+# <component>
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: FixMissingData
+display_name: Remove Empty Rows
+version: 1
+type: command
+inputs:
+  input_data: 
+    type: path 
+outputs:
+  output_data:
+    type: path
+code:
+  local_path: ./src
+environment: azureml:basic-env-scikit:1
+command: >-
+  python fix-missing-data.py 
+  --input_data ${{inputs.input_data}} 
+  --output_data ${{outputs.output_data}}
+# </component>

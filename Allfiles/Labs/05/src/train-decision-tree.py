@@ -4,13 +4,12 @@ import glob
 import pandas as pd
 import numpy as np
 import mlflow
-import os
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
 import matplotlib.pyplot as plt
-import joblib
+import pickle
 from pathlib import Path
 
 # get parameters
@@ -64,7 +63,4 @@ plt.savefig("ROCcurve.png")
 mlflow.log_artifact("ROCcurve.png")
 
 # Output the model and test data
-os.makedirs('outputs', exist_ok=True)
-model_output = os.path.join('outputs', 'diabetes_model.pkl')
-joblib.dump(value=model, filename=model_output)
-
+pickle.dump(model, open((Path(args.model_output) / "model.sav"), "wb"))

@@ -1,7 +1,7 @@
 # <component>
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
-name: TrainModel
-display_name: TrainModel
+name: TrainDecisionTreeClassifierModel
+display_name: Train a Decision Tree Classifier Model
 version: 1
 type: command
 inputs:
@@ -10,13 +10,11 @@ inputs:
 outputs:
   model_output:
     type: path
-  test_data:
-    type: path
 code:
-  local_path: ./train_src
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu:11
+  local_path: ./src
+environment: azureml:basic-env-scikit:1
 command: >-
-  python train.py 
+  python train-decision-tree.py 
   --training_data ${{inputs.training_data}} 
   --model_output ${{outputs.model_output}}
 # </component>

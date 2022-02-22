@@ -25,9 +25,6 @@ def main(args):
     reg_rate = args.reg_rate
     mlflow.log_param("Regularization rate", reg_rate)
     model = train_model(reg_rate, X_train, X_test, y_train, y_test)
-
-    # upload model to outputs
-
   
 def process_data(df):
     # split dataframe into X and y

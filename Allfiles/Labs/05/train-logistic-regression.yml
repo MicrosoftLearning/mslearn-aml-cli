@@ -1,0 +1,23 @@
+# <component>
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: TrainLogisticRegressionClassifierModel
+display_name: Train a Logistic Regression Classifier Model
+version: 1
+type: command
+inputs:
+  training_data: 
+    type: path
+  regularization_rate: 
+    type: number
+outputs:
+  model_output:
+    type: path
+code:
+  local_path: ./src
+environment: azureml:basic-env-scikit:1
+command: >-
+  python train-logistic-regression.py 
+  --training_data ${{inputs.training_data}}
+  --reg_rate ${{inputs.regularization_rate}}
+  --model_output ${{outputs.model_output}}
+# </component>

@@ -1,0 +1,16 @@
+# <component>
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: GetSummaryStats
+display_name: Get Summary Statistics
+version: 1
+type: command
+inputs:
+  input_data: 
+    type: path 
+code:
+  local_path: ./src
+environment: azureml:basic-env-scikit:1
+command: >-
+  python summary-stats.py 
+  --input_data ${{inputs.input_data}} 
+# </component>

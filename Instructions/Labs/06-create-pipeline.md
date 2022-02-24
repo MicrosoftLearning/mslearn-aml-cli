@@ -25,14 +25,14 @@ You'll run all commands in this lab from the Azure Cloud Shell. If this is your 
 
 You can train a model by running a job that refers to one training script. To train a model as part of a pipeline, you can use Azure Machine Learning to run multiple scripts. The configuration of the pipeline is defined in a YAML file, similar to a command job.
 
-In this exercise, you'll start by preprocessing the data and training a Decision Tree model. You can explore the pipeline job definition **job.yml** by navigating to **mslearn-aml-cli/Allfiles\Labs\05\job.yml**. The dataset used is the **diabetes-data** dataset registered to the Azure Machine Learning workspace in the set-up. 
+In this exercise, you'll start by preprocessing the data and training a Decision Tree model. You can explore the pipeline job definition **job.yml** by navigating to **mslearn-aml-cli/Allfiles/Labs/05/job.yml**. The dataset used is the **diabetes-data** dataset registered to the Azure Machine Learning workspace in the set-up. 
 
 1. Run the following command in the Cloud Shell to open the files of the cloned repo.
     ```azurecli
     code .
     ```
 1. Navigate to **mslearn-aml-cli/Allfiles/Labs/05/** and open **job.yml** by selecting the file.
-1. The **compute** value is **aml-cluster** to specify that the compute cluster you created in the set-up should be used. If you named your compute cluster differently, update the value.
+1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
 1. Run the job by using the following command:
     ```azurecli
     az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/05/job.yml
@@ -50,6 +50,7 @@ To reuse the pipeline's components, you can create the component in the Azure Ma
     az ml component create --file normalize-data.yml
     az ml component create --file train-decision-tree.yml
     az ml component create --file train-logistic-regression.yml
+    ```
 1. Navigate to the **Components** page in the Azure Machine Learning Studio. All created components should show in the list here. 
 
 ## Create a new pipeline with the Designer
@@ -82,9 +83,15 @@ The new model training component expects a numeric input, namely the regularizat
 
 ## Clean up resources
 
-When you're finished exploring Azure Machine Learning, the compute cluster will automatically scale down to 0 nodes, so there is no need to stop the cluster.
+When you're finished exploring Azure Machine Learning, shut down the compute instance to avoid unnecessary charges in your Azure subscription.
 
-> **Note:** If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat the set-up to create the workspace and prepare the environment first.
+You can stop a compute instance with the following command. Change `"testdev-vm"` to the name of your compute instance if necessary.
+
+```azurecli
+az ml compute stop --name "testdev-vm" --no-wait
+```
+
+> **Note:** Stopping your compute ensures your subscription won't be charged for compute resources. You will however be charged a small amount for data storage as long as the Azure Machine Learning workspace exists in your subscription. If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat this lab to create the workspace and prepare the environment first.
 
 To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
 

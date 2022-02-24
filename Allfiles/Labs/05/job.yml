@@ -25,7 +25,7 @@ settings:
 jobs:
   stats-job:
     type: component
-    component: file:./stats.yml
+    component: file:./summary-stats.yml
     inputs:
       input_data: ${{inputs.pipeline_job_input}}
 

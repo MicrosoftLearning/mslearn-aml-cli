@@ -45,11 +45,11 @@ To reuse the pipeline's components, you can create the component in the Azure Ma
 
 1. Each component is created separately. Run the following code to create the components:
     ```azurecli
-    az ml component create --file summary-stats.yml
-    az ml component create --file fix-missing-data.yml
-    az ml component create --file normalize-data.yml
-    az ml component create --file train-decision-tree.yml
-    az ml component create --file train-logistic-regression.yml
+    az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/summary-stats.yml
+    az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/fix-missing-data.yml
+    az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/normalize-data.yml
+    az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/train-decision-tree.yml
+    az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/train-logistic-regression.yml
     ```
 1. Navigate to the **Components** page in the Azure Machine Learning Studio. All created components should show in the list here. 
 

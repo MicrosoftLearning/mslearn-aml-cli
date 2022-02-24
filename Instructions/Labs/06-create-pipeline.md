@@ -60,7 +60,7 @@ You can reuse the components by creating a pipeline with the Designer. You can r
 1. Navigate to the **Designer** page in the Azure Machine Learning Studio.
 1. Create a new pipeline.
 1. Rename the pipeline to *Train-Diabetes-Classifier*.
-1. Change the default compute target to use the compute cluster (*aml-cluster*) you created.
+1. Change the default compute target to use the compute instance (*testdev-vm*) you created.
 1. In the left menu, expand the **Datasets** section.
 1. Drag and drop the **diabetes-data** component to the canvas.
 1. In the left menu, expand the **Custom Components** section.
@@ -68,7 +68,7 @@ You can reuse the components by creating a pipeline with the Designer. You can r
 1. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
 1. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
 ![Decision Tree Pipeline in Designer](media/designer-pipeline-decision.png)
-1. Submit your pipeline and wait until all components have successfully completed.
+1. Submit your pipeline. Create a new experiment and name it *diabetes-designer-pipeline*. Wait until all components have successfully completed.
 
 You have now trained the model with a similar pipeline as before (only omitting the calculation of the summary statistics). You can change the algorithm you use to train the model by replacing the last component:
 
@@ -79,7 +79,7 @@ The new model training component expects a numeric input, namely the regularizat
 
 1. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. Your pipeline should look like this:
 ![Logistic Regression Pipeline in Designer](media/designer-pipeline-regression.png)
-1. Submit the pipeline. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
+1. Submit the pipeline. Select the existing experiment named *diabetes-designer-pipeline*. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
 
 ## Clean up resources
 
@@ -91,7 +91,7 @@ You can stop a compute instance with the following command. Change `"testdev-vm"
 az ml compute stop --name "testdev-vm" --no-wait
 ```
 
-> **Note:** Stopping your compute ensures your subscription won't be charged for compute resources. You will however be charged a small amount for data storage as long as the Azure Machine Learning workspace exists in your subscription. If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat this lab to create the workspace and prepare the environment first.
+> **Note:** Stopping your compute ensures your subscription won't be charged for compute resources. You will however be charged a small amount for data storage as long as the Azure Machine Learning workspace exists in your subscription. If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat the set-up to create the workspace and prepare the environment first.
 
 To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
 

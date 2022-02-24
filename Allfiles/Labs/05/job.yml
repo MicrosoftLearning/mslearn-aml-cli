@@ -18,7 +18,7 @@ outputs:
 # </inputs_and_outputs>
 
 # <jobs>
-compute: azureml:aml-cluster
+compute: azureml:<your-compute-instance>
 settings:
   datastore: azureml:workspaceblobstore
 
@@ -39,7 +39,7 @@ jobs:
 
   normalize-job:
     type: component
-    component: file:./normalize.yml
+    component: file:./normalize-data.yml
     inputs:
       input_data: ${{jobs.fix-missing-job.outputs.output_data}}
     outputs:
@@ -47,7 +47,7 @@ jobs:
 
   train-job:
     type: component
-    component: file:./train.yml
+    component: file:./train-decision-tree.yml
     inputs:
       training_data: ${{jobs.normalize-job.outputs.output_data}}
     outputs:

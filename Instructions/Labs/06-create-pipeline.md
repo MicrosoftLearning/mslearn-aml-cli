@@ -58,28 +58,28 @@ To reuse the pipeline's components, you can create the component in the Azure Ma
 You can reuse the components by creating a pipeline with the Designer. You can recreate the same pipeline, or change the algorithm you use to train a model by replacing the component used to train the model.
 
 1. Navigate to the **Designer** page in the Azure Machine Learning Studio.
-1. Create a new pipeline.
-1. Rename the pipeline to *Train-Diabetes-Classifier*.
-1. Change the default compute target to use the compute instance (*testdev-vm*) you created.
-1. In the left menu, expand the **Datasets** section.
-1. Drag and drop the **diabetes-data** component to the canvas.
-1. In the left menu, expand the **Custom Components** section.
-1. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
-1. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
-1. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
+2. Create a new pipeline.
+3. Rename the pipeline to *Train-Diabetes-Classifier*.
+4. Change the default compute target to use the compute instance (*testdev-vm*) you created.
+5. In the left menu, expand the **Datasets** section.
+6. Drag and drop the **diabetes-data** component to the canvas.
+7. In the left menu, expand the **Custom Components** section.
+8. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
+9. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
+10. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
 ![Decision Tree Pipeline in Designer](media/designer-pipeline-decision.png)
-1. Submit your pipeline. Create a new experiment and name it *diabetes-designer-pipeline*. Wait until all components have successfully completed.
+11. Submit your pipeline. Create a new experiment and name it *diabetes-designer-pipeline*. Wait until all components have successfully completed.
 
 You have now trained the model with a similar pipeline as before (only omitting the calculation of the summary statistics). You can change the algorithm you use to train the model by replacing the last component:
 
-1. Remove the **Train a Decision Tree Classifier Model** component from the pipeline. 
-1. Drag and drop the **Train a Logistic Regression Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
+12. Remove the **Train a Decision Tree Classifier Model** component from the pipeline. 
+13. Drag and drop the **Train a Logistic Regression Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
 
 The new model training component expects a numeric input, namely the regularization rate. 
 
-1. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. Your pipeline should look like this:
+14. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. Your pipeline should look like this:
 ![Logistic Regression Pipeline in Designer](media/designer-pipeline-regression.png)
-1. Submit the pipeline. Select the existing experiment named *diabetes-designer-pipeline*. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
+15. Submit the pipeline. Select the existing experiment named *diabetes-designer-pipeline*. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
 
 ## Clean up resources
 

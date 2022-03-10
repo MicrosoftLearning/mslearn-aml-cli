@@ -12,7 +12,7 @@ In this exercise, you will build a pipeline with components. The pipeline will b
 
 Before you continue, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](01-create-workspace.md) lab to set up your Azure Machine Learning environment.
 
-You'll run all commands in this lab from the Azure Cloud Shell. If this is your first time using the cloud shell, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](Instructions/Labs/01-create-workspace.md) lab to set up the cloud shell environment.
+You'll run all commands in this lab from the Azure Cloud Shell.
 
 1. Open the Cloud Shell by navigating to [http://shell.azure.com](https://shell.azure.com/?azure-portal=true) and signing in with your Microsoft account.
 1. The repo [https://github.com/MicrosoftLearning/mslearn-aml-cli](https://github.com/MicrosoftLearning/mslearn-aml-cli) should be cloned. You can explore the repo and its contents by using the `code .` command in the Cloud Shell.
@@ -23,9 +23,9 @@ You'll run all commands in this lab from the Azure Cloud Shell. If this is your 
 
 ## Run a pipeline
 
-You can train a model by running a job that refers to one training script. To train a model as part of a pipeline, you can use Azure Machine Learning to run multiple scripts. The configuration of the pipeline is defined in a YAML file, similar to a command job.
+You can train a model by running a job that refers to one training script. To train a model as part of a pipeline, you can use Azure Machine Learning to run multiple scripts. The configuration of the pipeline is defined in a YAML file.
 
-In this exercise, you'll start by preprocessing the data and training a Decision Tree model. You can explore the pipeline job definition **job.yml** by navigating to **mslearn-aml-cli/Allfiles/Labs/05/job.yml**. The dataset used is the **diabetes-data** dataset registered to the Azure Machine Learning workspace in the set-up. 
+In this exercise, you'll start by preprocessing the data and training a Decision Tree model. To explore the pipeline job definition **job.yml** navigate to **mslearn-aml-cli/Allfiles/Labs/05/job.yml**. The dataset used is the **diabetes-data** dataset registered to the Azure Machine Learning workspace in the set-up. 
 
 1. Run the following command in the Cloud Shell to open the files of the cloned repo.
     ```azurecli
@@ -41,7 +41,7 @@ In this exercise, you'll start by preprocessing the data and training a Decision
 
 ## Create components
 
-To reuse the pipeline's components, you can create the component in the Azure Machine Learning workspace. Next to the components that were part of the pipeline you just ran, you'll create another new component you haven't used before. You'll use the new component in the next part.
+To reuse the pipeline's components, you can create the component in the Azure Machine Learning workspace. In addition to the components that were part of the pipeline you've just ran, you'll create another new component you haven't used before. You'll use the new component in the next part.
 
 1. Each component is created separately. Run the following code to create the components:
     ```azurecli
@@ -93,7 +93,7 @@ az ml compute stop --name "testdev-vm" --no-wait
 
 > **Note:** Stopping your compute ensures your subscription won't be charged for compute resources. You will however be charged a small amount for data storage as long as the Azure Machine Learning workspace exists in your subscription. If you have finished exploring Azure Machine Learning, you can delete the Azure Machine Learning workspace and associated resources. However, if you plan to complete any other labs in this series, you will need to repeat the set-up to create the workspace and prepare the environment first.
 
-To delete the Azure Machine Learning workspace, you can use the following command in the CLI:
+To completely delete the Azure Machine Learning workspace, you can use the following command in the CLI:
 
 ```azurecli
 az ml workspace delete

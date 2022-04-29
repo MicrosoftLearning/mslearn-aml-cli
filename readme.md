@@ -2,7 +2,7 @@
 
 This repository contains the hands-on lab exercises for the Microsoft Learning Path Train models in Azure Machine Learning with the CLI (v2). The Learning Path consists of self-paced modules on Microsoft Learn. The labs are designed to accompany the learning materials and enable you to practice using the technologies described them.
 
-You can view the instructions for the lab exercises at https://aka.ms/aml-cli.
+You can view the instructions for the lab exercises at https://aka.ms/aml-cli2.
 
 ## What are we doing?
 

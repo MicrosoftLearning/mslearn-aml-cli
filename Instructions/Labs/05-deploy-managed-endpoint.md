@@ -32,7 +32,7 @@ To deploy the model using the CLI (v2), you first create an endpoint.
 1. The deployment configuration refers to the endpoint configuration. In addition, it specifies how the model should be registered, what kind of compute should be used for the inference configuration, and where it can find the model assets. The MLflow model assets are stored in the **model** folder.
 1. To deploy the model, run the following command:
     ```azurecli
-    az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow -f ./mslearn-aml-cli/Allfiles/Labs/04/mlflow-endpoint/mlflow-deployment.yaml --all-traffic
+    az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow -f ./mslearn-aml-cli/Allfiles/Labs/04/mlflow-endpoint/mlflow-deployment.yml --all-traffic
     ```
 1. Deployment may take some time, and progress will be visible in the Azure Cloud Shell. You can also view the endpoint in the Azure Machine Learning Studio, in the **Endpoints** tab, under **Real-time endpoints**.
 

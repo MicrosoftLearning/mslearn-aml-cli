@@ -1,9 +1,8 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-code: 
-  local_path: src
+code: src
 command: >-
   python main.py 
-environment: azureml:basic-env-scikit:1
+environment: azureml:basic-env-scikit@latest
 compute: azureml:<your-compute-instance-name>
 experiment_name: diabetes-example
 description: Train a Logistic Regression classification model on the diabetes dataset that is stored locally.

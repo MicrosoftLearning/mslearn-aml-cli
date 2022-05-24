@@ -117,7 +117,7 @@ To create a dataset in the workspace from a local CSV, you need two files:
 Before you create a dataset, you can explore the files by using the `code .` command in the Cloud Shell.
 1. Run the following command to create a dataset from the configuration described in `data-local-path.yml`:
     ```azurecli
-    az ml dataset create --file ./mslearn-aml-cli/Allfiles/Labs/01/data-local-path.yml
+    az ml data create --file ./mslearn-aml-cli/Allfiles/Labs/01/data-local-path.yml
     ```
 
 When you create a dataset from a local path, the workspace will automatically upload the dataset to the default datastore. In this case, it will be uploaded to the storage account which was created when you created the workspace.

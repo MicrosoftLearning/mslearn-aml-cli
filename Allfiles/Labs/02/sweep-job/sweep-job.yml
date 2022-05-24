@@ -2,17 +2,16 @@ $schema: https://azuremlschemas.azureedge.net/latest/sweepJob.schema.json
 type: sweep
 sampling_algorithm: grid
 trial:
-  code: 
-    local_path: src
+  code: src
   command: >-
     python main.py
     --diabetes-csv ${{inputs.diabetes}} 
     --learning-rate ${{search_space.learning_rate}}
     --n-estimators ${{search_space.n_estimators}}
-  environment: azureml:basic-env-scikit:1
+  environment: azureml:basic-env-scikit@latest
 inputs:
   diabetes:
-    dataset: azureml:diabetes-data:1
+    path: azureml:diabetes-data:1
     mode: ro_mount
 compute: azureml:aml-cluster
 search_space:

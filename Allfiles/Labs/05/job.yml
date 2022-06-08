@@ -2,54 +2,47 @@ $schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
 type: pipeline
 experiment_name: diabetes-pipeline-example
 
-# <inputs_and_outputs>
-inputs:
-  pipeline_job_input: #using dataset, can use datastore + datapath also
-    dataset: azureml:diabetes-data:1
-    mode: download
-
-outputs: 
-  pipeline_job_cleaned_data:
-    mode: upload
-  pipeline_job_normalized_data:
-    mode: upload
-  pipeline_job_trained_model:
-    mode: upload
-# </inputs_and_outputs>
-
-# <jobs>
 compute: azureml:<your-compute-instance>
 settings:
   datastore: azureml:workspaceblobstore
 
+outputs: 
+  pipeline_job_trained_model:
+    mode: upload
+
 jobs:
-  stats-job:
-    type: component
+  stats_job:
+    type: command
     component: file:./summary-stats.yml
     inputs:
-      input_data: ${{inputs.pipeline_job_input}}
+      input_data:
+        type: uri_folder
+        path: azureml:diabetes-data:1 
 
-  fix-missing-job:
-    type: component
+  fix_missing_job:
+    type: command
     component: file:./fix-missing-data.yml
     inputs:
-      input_data: ${{inputs.pipeline_job_input}}
+      input_data:
+        type: uri_folder
+        path: azureml:diabetes-data:1 
     outputs:
-      output_data: ${{outputs.pipeline_job_cleaned_data}}
+      output_data:
+        mode: upload
 
-  normalize-job:
-    type: component
+  normalize_job:
+    type: command
     component: file:./normalize-data.yml
     inputs:
-      input_data: ${{jobs.fix-missing-job.outputs.output_data}}
+      input_data: ${{parent.jobs.fix_missing_job.outputs.output_data}}
     outputs:
-      output_data: ${{outputs.pipeline_job_normalized_data}}
+      output_data:
+        mode: upload
 
-  train-job:
-    type: component
+  train_job:
+    type: command
     component: file:./train-decision-tree.yml
     inputs:
-      training_data: ${{jobs.normalize-job.outputs.output_data}}
+      training_data: ${{parent.jobs.normalize_job.outputs.output_data}}
     outputs:
-      model_output: ${{outputs.pipeline_job_trained_model}}
-# </jobs>
+      model_output: ${{parent.outputs.pipeline_job_trained_model}}

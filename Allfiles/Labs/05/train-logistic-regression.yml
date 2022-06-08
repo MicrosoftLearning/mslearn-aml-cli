@@ -6,15 +6,14 @@ version: 1
 type: command
 inputs:
   training_data: 
-    type: path
+    type: uri_folder
   regularization_rate: 
     type: number
 outputs:
   model_output:
-    type: path
-code:
-  local_path: ./src
-environment: azureml:basic-env-scikit:1
+    type: uri_folder
+code: ./src
+environment: azureml:basic-env-scikit@latest
 command: >-
   python train-logistic-regression.py 
   --training_data ${{inputs.training_data}}

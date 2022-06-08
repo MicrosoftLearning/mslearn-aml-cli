@@ -6,10 +6,9 @@ version: 1
 type: command
 inputs:
   input_data: 
-    type: path 
-code:
-  local_path: ./src
-environment: azureml:basic-env-scikit:1
+    type: uri_folder 
+code: ./src
+environment: azureml:basic-env-scikit@latest
 command: >-
   python summary-stats.py 
   --input_data ${{inputs.input_data}} 

@@ -2,17 +2,16 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
 name: NormalizeData
 display_name: Normalize Numerical Columns
-version: 2
+version: 1
 type: command
 inputs:
   input_data: 
-    type: path 
+    type: uri_folder 
 outputs:
   output_data:
-    type: path
-code:
-  local_path: ./src
-environment: azureml:basic-env-scikit:1
+    type: uri_folder
+code: ./src
+environment: azureml:basic-env-scikit@latest
 command: >-
   python normalize-data.py 
   --input_data ${{inputs.input_data}} 

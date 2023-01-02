@@ -10,8 +10,9 @@ outputs:
   output_data:
     type: uri_folder
 code: ./src
-environment: azureml:basic-env-scikit@latest
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 command: >-
   python fix-missing-data.py 
   --input_data ${{inputs.input_data}} 
   --output_data ${{outputs.output_data}}
+

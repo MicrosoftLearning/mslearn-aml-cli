@@ -8,7 +8,7 @@ inputs:
   input_data: 
     type: uri_folder 
 code: ./src
-environment: azureml:basic-env-scikit@latest
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 command: >-
   python summary-stats.py 
   --input_data ${{inputs.input_data}} 

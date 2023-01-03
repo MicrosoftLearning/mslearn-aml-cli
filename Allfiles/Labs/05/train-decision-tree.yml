@@ -1,6 +1,6 @@
 # <component>
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
-name: TrainDecisionTreeClassifierModel
+name: train_decision_tree_classifier_model
 display_name: Train a Decision Tree Classifier Model
 version: 1
 type: command

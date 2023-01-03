@@ -1,6 +1,6 @@
 # <component>
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
-name: GetSummaryStats
+name: get_summary_statistics
 display_name: Get Summary Statistics
 version: 1
 type: command

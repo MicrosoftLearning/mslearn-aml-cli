@@ -58,12 +58,13 @@ To reuse the pipeline's components, you can create the component in the Azure Ma
 You can reuse the components by creating a pipeline with the Designer. You can recreate the same pipeline, or change the algorithm you use to train a model by replacing the component used to train the model.
 
 1. Navigate to the **Designer** page in the Azure Machine Learning Studio.
-2. Create a new pipeline.
+1. Select the **Custom** tab at the top of the page.
+1. Create a new empty pipeline using custom components.
 3. Rename the pipeline to *Train-Diabetes-Classifier*.
 4. Change the default compute target to use the compute instance (*testdev-vm*) you created.
-5. In the left menu, expand the **Datasets** section.
+5. In the left menu, select the **Data** tab.
 6. Drag and drop the **diabetes-data** component to the canvas.
-7. In the left menu, expand the **Custom Components** section.
+7. In the left menu, select the **Components** tab.
 8. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
 9. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
 10. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:

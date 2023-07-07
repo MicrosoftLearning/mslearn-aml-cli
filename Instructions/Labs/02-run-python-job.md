@@ -12,7 +12,7 @@ In this exercise, you will train a model with a Python script. The model trainin
 
 Before you continue, complete the [Create an Azure Machine Learning Workspace and assets with the CLI (v2)](01-create-workspace.md) lab to set up your cloud shell environment and your Azure Machine Learning environment.
 
-1. Open the Cloud Shell by navigating to [http://shell.azure.com](https://shell.azure.com/?azure-portal=true) and signing in with your Microsoft account. Alternately, you can access
+1. Open the Cloud Shell by navigating to [http://shell.azure.com](https://shell.azure.com/?azure-portal=true) and signing in with your Microsoft account.
 1. The repo [https://github.com/MicrosoftLearning/mslearn-aml-cli](https://github.com/MicrosoftLearning/mslearn-aml-cli) should be cloned. You can explore the repo and its contents by using the `code .` command in the Cloud Shell.
 1. If your compute instance is stopped. Start the instance again by using the following command. Change <your-compute-instance-name> to your compute instance name before running the code:
 

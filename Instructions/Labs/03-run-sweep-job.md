@@ -68,4 +68,3 @@ To delete the Azure Machine Learning workspace, you can use the following comman
 ```azurecli
 az ml workspace delete
 ```
-d

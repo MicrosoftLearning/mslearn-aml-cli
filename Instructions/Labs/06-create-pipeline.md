@@ -25,25 +25,30 @@ You'll run all commands in this lab from the Azure Cloud Shell.
 
 You can train a model by running a job that refers to one training script. To train a model as part of a pipeline, you can use Azure Machine Learning to run multiple scripts. The configuration of the pipeline is defined in a YAML file.
 
-In this exercise, you'll start by preprocessing the data and training a Decision Tree model. To explore the pipeline job definition **job.yml** navigate to **mslearn-aml-cli/Allfiles/Labs/05/job.yml**. The dataset used is the **diabetes-data** dataset registered to the Azure Machine Learning workspace in the set-up. 
+In this exercise, you'll start by preprocessing the data and training a Decision Tree model. To explore the pipeline job definition **job.yml** navigate to **mslearn-aml-cli/Allfiles/Labs/05/job.yml**. The dataset used is the **diabetes-data** dataset registered to the Azure Machine Learning workspace in the set-up.
 
 1. Run the following command in the Cloud Shell to open the files of the cloned repo.
+
     ```azurecli
     code .
     ```
-1. Navigate to **mslearn-aml-cli/Allfiles/Labs/05/** and open **job.yml** by selecting the file.
-1. Change the **compute** value: replace <your-compute-instance-name> with the name of your compute instance.
-1. Run the job by using the following command:
+
+2. Navigate to **mslearn-aml-cli/Allfiles/Labs/05/** and open **job.yml** by selecting the file.
+3. Change the **compute** value: replace `<your-compute-instance-name>` with the name of your compute instance.
+4. Run the job by using the following command:
+
     ```azurecli
     az ml job create --file ./mslearn-aml-cli/Allfiles/Labs/05/job.yml
     ```
-1. Open another tab in your browser and open the Azure Machine Learning Studio. Go to the **Experiments** page and locate the **diabetes-pipeline-example** experiment. Open the run to monitor the job. Refresh the view if necessary. Once completed, you can explore the details of the job and of each component by expanding the **Child runs**.
+
+5. Open another tab in your browser and open the Azure Machine Learning Studio. Go to the **Experiments** page and locate the **diabetes-pipeline-example** experiment. Open the run to monitor the job. Refresh the view if necessary. Once completed, you can explore the details of the job and of each component by expanding the **Child runs**.
 
 ## Create components
 
 To reuse the pipeline's components, you can create the component in the Azure Machine Learning workspace. In addition to the components that were part of the pipeline you've just ran, you'll create another new component you haven't used before. You'll use the new component in the next part.
 
 1. Each component is created separately. Run the following code to create the components:
+
     ```azurecli
     az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/summary-stats.yml
     az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/fix-missing-data.yml
@@ -51,36 +56,39 @@ To reuse the pipeline's components, you can create the component in the Azure Ma
     az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/train-decision-tree.yml
     az ml component create --file ./mslearn-aml-cli/Allfiles/Labs/05/train-logistic-regression.yml
     ```
-1. Navigate to the **Components** page in the Azure Machine Learning Studio. All created components should show in the list here. 
+
+2. Navigate to the **Components** page in the Azure Machine Learning Studio. All created components should show in the list here. 
 
 ## Create a new pipeline with the Designer
 
 You can reuse the components by creating a pipeline with the Designer. You can recreate the same pipeline, or change the algorithm you use to train a model by replacing the component used to train the model.
 
 1. Navigate to the **Designer** page in the Azure Machine Learning Studio.
-1. Select the **Custom** tab at the top of the page.
-1. Create a new empty pipeline using custom components.
-3. Rename the pipeline to *Train-Diabetes-Classifier*.
-4. Change the default compute target to use the compute instance (*testdev-vm*) you created.
-5. In the left menu, select the **Data** tab.
-6. Drag and drop the **diabetes-data** component to the canvas.
-7. In the left menu, select the **Components** tab.
-8. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
-9. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
-10. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
+2. Select the **Custom** tab at the top of the page.
+3. Create a new empty pipeline using custom components.
+4. Rename the pipeline to *Train-Diabetes-Classifier*.
+5. Change the default compute target to use the compute instance you created.
+6. In the left menu, select the **Data** tab.
+7. Drag and drop the **diabetes-data** component to the canvas.
+8. In the left menu, select the **Component** tab.
+9. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
+10. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
+11. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Normalize numerical columns**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
 ![Decision Tree Pipeline in Designer](media/designer-pipeline-decision.png)
-11. Submit your pipeline. Create a new experiment and name it *diabetes-designer-pipeline*. Wait until all components have successfully completed.
+12. Submit your pipeline. Create a new experiment and name it *diabetes-designer-pipeline*. Wait until all components have successfully completed.
+
+## Update the pipeline with the Designer
 
 You have now trained the model with a similar pipeline as before (only omitting the calculation of the summary statistics). You can change the algorithm you use to train the model by replacing the last component:
 
-12. Remove the **Train a Decision Tree Classifier Model** component from the pipeline. 
-13. Drag and drop the **Train a Logistic Regression Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
+1. Remove the **Train a Decision Tree Classifier Model** component from the pipeline. 
+2. Drag and drop the **Train a Logistic Regression Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
 
-The new model training component expects a numeric input, namely the regularization rate. 
+    The new model training component expects a numeric input, namely the regularization rate.
 
-14. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. Your pipeline should look like this:
+3. Select the **Train a Logistic Regression Model** component and enter **1** for the **regularization_rate**. Your pipeline should look like this:
 ![Logistic Regression Pipeline in Designer](media/designer-pipeline-regression.png)
-15. Submit the pipeline. Select the existing experiment named *diabetes-designer-pipeline*. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
+4. Submit the pipeline. Select the existing experiment named *diabetes-designer-pipeline*. Once completed, you can review the metrics and compare it with the previous pipeline to see if the model's performance has improved.
 
 ## Clean up resources
 

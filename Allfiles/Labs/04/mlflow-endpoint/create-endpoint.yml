@@ -1,3 +1,2 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
-name: mlflow-endpoint
 auth_mode: key

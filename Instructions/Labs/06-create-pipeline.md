@@ -67,22 +67,26 @@ You can reuse the components by creating a pipeline with the Designer. You can r
 2. Select the **Custom** tab at the top of the page.
 3. Create a new empty pipeline using custom components.
 4. Rename the pipeline to *Train-Diabetes-Classifier*.
-5. Change the default compute target to use the compute instance you created.
-6. In the left menu, select the **Data** tab.
-7. Drag and drop the **diabetes-data** component to the canvas.
-8. In the left menu, select the **Component** tab.
-9. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
-10. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
-11. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Normalize numerical columns**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
+5. In the left menu, select the **Data** tab.
+6. Drag and drop the **diabetes-data** component to the canvas.
+7. In the left menu, select the **Component** tab.
+8. Drag and drop the **Remove Empty Rows** component on to the canvas, below the **diabetes-data**. Connect the output of the data to the input of the new component.
+9. Drag and drop the **Normalize numerical columns** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
+10. Drag and drop the **Train a Decision Tree Classifier Model** component on to the canvas, below the **Normalize numerical columns**. Connect the output of the previous component to the input of the new component. Your pipeline should look like this:
 ![Decision Tree Pipeline in Designer](media/designer-pipeline-decision.png)
-12. Submit your pipeline. Create a new experiment and name it *diabetes-designer-pipeline*. Wait until all components have successfully completed.
+
+11. Select **Configure & Submit** to setup the pipeline job.
+12. On the **Basics** page create a new experiment, name it *diabetes-designer-pipeline* and select **Next**.
+13. On the **Inputs & outputs** page select **Next**.
+14. On the **Runtime settings** page set the default compute target to use the compute instance you created and select **Next**.
+15. On the **Review + Submit** page select **Submit** and wait for the job to complete.
 
 ## Update the pipeline with the Designer
 
 You have now trained the model with a similar pipeline as before (only omitting the calculation of the summary statistics). You can change the algorithm you use to train the model by replacing the last component:
 
 1. Remove the **Train a Decision Tree Classifier Model** component from the pipeline. 
-2. Drag and drop the **Train a Logistic Regression Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
+2. Drag and drop the **Train a Logistic Regression Classifier Model** component on to the canvas, below the **Remove empty rows**. Connect the output of the previous component to the input of the new component.
 
     The new model training component expects a numeric input, namely the regularization rate.
 

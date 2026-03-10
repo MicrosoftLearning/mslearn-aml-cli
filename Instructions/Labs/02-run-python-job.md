@@ -1,7 +1,17 @@
 ---
 lab:
-    title: 'Lab: Run a basic Python training job'
-    module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  title: 'Lab: Run a basic Python training job'
+  module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  description: In this exercise, you will train a model with a Python script. The
+    model training will be submitted with the CLI (v2). First, you'll train a model
+    based on a local CSV dataset. Next, you'll train a model using a dataset registered
+    in the Azure Machine Learning workspace.
+  duration: 50 minutes
+  level: 100
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Machine Learning
 ---
 
 # Run a basic Python training job

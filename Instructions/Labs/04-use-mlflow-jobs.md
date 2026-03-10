@@ -1,7 +1,14 @@
 ---
 lab:
-    title: 'Lab: Track Azure ML jobs with MLflow'
-    module: 'Module: Use MLflow with Azure ML jobs submitted with CLI (v2)'
+  title: 'Lab: Track Azure ML jobs with MLflow'
+  module: 'Module: Use MLflow with Azure ML jobs submitted with CLI (v2)'
+  description: In this exercise, you will train a model with a Python script. The
+    Python script uses **MLflow** to track parameters, metrics, and artifacts.
+  duration: 54 minutes
+  level: 100
+  islab: true
+  primarytopics:
+  - Azure
 ---
 
 # Track Azure ML jobs with MLflow

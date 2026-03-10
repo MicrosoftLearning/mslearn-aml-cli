@@ -1,7 +1,17 @@
 ---
 lab:
-    title: 'Lab: Create an Azure Machine Learning workspace and assets with the CLI (v2)'
-    module: 'Module: Create Azure Machine Learning resources with the CLI (v2)'
+  title: 'Lab: Create an Azure Machine Learning workspace and assets with the CLI
+    (v2)'
+  module: 'Module: Create Azure Machine Learning resources with the CLI (v2)'
+  description: In this exercise, you will create and explore an Azure Machine Learning
+    workspace using the Azure Cloud Shell.
+  duration: 5 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Cloud Shell
+  - Azure Machine Learning
 ---
 
 # Create an Azure Machine Learning workspace and assets with the CLI (v2)

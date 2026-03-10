@@ -1,7 +1,19 @@
 ---
 lab:
-    title: 'Lab: Run a pipeline with components'
-    module: 'Module: Run component-based pipelines in Azure Machine Learning with CLI (v2)'
+  title: 'Lab: Run a pipeline with components'
+  module: 'Module: Run component-based pipelines in Azure Machine Learning with CLI
+    (v2)'
+  description: In this exercise, you will build a pipeline with components. The pipeline
+    will be submitted with the CLI (v2). First, you'll run a pipeline. Next, you'll
+    create components in the Azure Machine Learning workspace so that they can be
+    reused. Finally, you'll create a pipeline with the Designer in the Azure Machine
+    Learning Studio to experience how you can reuse components to create new pipelines.
+  duration: 80 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Machine Learning
 ---
 
 # Run a pipeline with components

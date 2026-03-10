@@ -1,7 +1,13 @@
 ---
 lab:
-    title: 'Lab: Perform hyperparameter tuning with a sweep job'
-    module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  title: 'Lab: Perform hyperparameter tuning with a sweep job'
+  module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  description: In this exercise, you will perform hyperparameter tuning when training
+    a model with a Python script.The model training will be submitted with the CLI
+    (v2).
+  duration: 34 minutes
+  level: 100
+  islab: true
 ---
 
 # Run a sweep job to tune hyperparameters

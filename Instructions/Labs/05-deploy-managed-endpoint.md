@@ -1,7 +1,13 @@
 ---
 lab:
-    title: 'Lab: Deploy an MLflow model to a managed online endpoint'
-    module: 'Module: Deploy an Azure Machine Learning model to a managed endpoint with CLI (v2)'
+  title: 'Lab: Deploy an MLflow model to a managed online endpoint'
+  module: 'Module: Deploy an Azure Machine Learning model to a managed endpoint with
+    CLI (v2)'
+  description: In this exercise, you will deploy an MLflow model to a managed online
+    endpoint.
+  duration: 42 minutes
+  level: 200
+  islab: true
 ---
 
 # Deploy a model to a managed online endpoint

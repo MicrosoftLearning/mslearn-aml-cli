@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Run a basic Python training job'
-    module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  title: 'Lab: Run a basic Python training job'
+  module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  description: In this exercise, you'll train a Logistic Regression model. Explore the training script main.py by navigating to mslearn-aml-cli/Allfiles/Labs/02/basic-job/src/main.py. The dataset used is in the same folder and stored as diabetes.csv.
+  duration: 50 minutes
+  level: 100
+  islab: true
 ---
 
 # Run a basic Python training job

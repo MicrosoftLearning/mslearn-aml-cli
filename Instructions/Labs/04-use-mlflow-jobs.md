@@ -1,7 +1,15 @@
 ---
 lab:
-    title: 'Lab: Track Azure ML jobs with MLflow'
-    module: 'Module: Use MLflow with Azure ML jobs submitted with CLI (v2)'
+  title: 'Lab: Track Azure ML jobs with MLflow'
+  module: 'Module: Use MLflow with Azure ML jobs submitted with CLI (v2)'
+  description: You'll run all commands in this lab from the Azure Cloud Shell. If this is your first time using the cloud shell, complete the Create an Azure Machine Learning Workspace and assets with the CLI (v2) lab to set up the cloud shell environment.
+  duration: 54 minutes
+  level: 100
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Cloud Shell
+    - Azure Machine Learning
 ---
 
 # Track Azure ML jobs with MLflow

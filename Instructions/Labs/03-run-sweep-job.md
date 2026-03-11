@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Lab: Perform hyperparameter tuning with a sweep job'
-    module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  title: 'Lab: Perform hyperparameter tuning with a sweep job'
+  module: 'Module: Run jobs in Azure Machine Learning with CLI (v2)'
+  description: In this exercise, you'll train a Gradient Boosting Classifier model. Explore the training script main.py by navigating to mslearn-aml-cli/Allfiles/Labs/02/sweep-job/src/main.py. The dataset used is the registered dataset diabetes-data.
+  duration: 34 minutes
+  level: 100
+  islab: true
 ---
 
 # Run a sweep job to tune hyperparameters
